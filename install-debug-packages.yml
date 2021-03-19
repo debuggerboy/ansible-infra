@@ -1,0 +1,17 @@
+- hosts: all
+  become: 'yes'
+  vars:
+    user:
+      - name: "anish"
+    packages:
+      - htop
+      - strace
+      - lsof
+  tasks:
+    - name: Install debug packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+    - name: All done!
+      debug:
+        msg: all debug packages installed successfully
