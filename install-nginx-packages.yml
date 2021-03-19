@@ -21,6 +21,12 @@
         packages:
           - nginx
     
+    - name: start nginx
+      service:
+        name: nginx
+          state: started
+          enabled: 'yes'
+
     - name: Nginx installed
       debug:
         msg: the nginx server is installed.
