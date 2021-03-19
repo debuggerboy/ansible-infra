@@ -9,7 +9,7 @@
 
     - name: install official nginx from nginx owned deb repository
       apt_repository:
-        repo: deb http://nginx.org/packages/debian `lsb_release -cs` nginx
+        repo: deb http://nginx.org/packages/debian buster nginx
         state: present
       become: true
 
@@ -17,7 +17,6 @@
       apt:
         name: "{{ packages }}"
         state: present
-        update_cache: true
       vars:
         packages:
           - nginx
