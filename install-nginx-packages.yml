@@ -1,0 +1,27 @@
+- hosts: all
+  become: 'yes'
+  tasks:
+    - name: import the nginx apt key
+      apt_key:
+        url: https://nginx.org/keys/nginx_signing.key
+        state: present
+      become: true
+
+    - name: install official nginx from nginx owned deb repository
+      apt_repository:
+        repo: deb http://nginx.org/packages/debian `lsb_release -cs` nginx
+        state: present
+      become: true
+
+    - name: install official nginx
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: true
+      vars:
+        packages:
+          - nginx
+    
+    - name: Nginx installed
+      debug:
+        msg: the nginx server is installed.
