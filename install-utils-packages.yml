@@ -4,7 +4,15 @@
     - name: Install util packages
       apt:
         name: "{{ packages }}"
+        state: present
       vars:
         packages:
           - unzip
           - zip
+          - curl
+          - gnupg2
+          - ca-certificates
+          - lsb-release
+    - name: Run Complete
+      debug:
+        msg: the required packages are installed.
