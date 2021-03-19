@@ -1,0 +1,12 @@
+- hosts: all
+  become: 'yes'
+  tasks:
+    - name: Install util packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - unzip
+          - unrar
+          - zip
+          - rar
