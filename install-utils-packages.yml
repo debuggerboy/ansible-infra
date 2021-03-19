@@ -7,6 +7,4 @@
       vars:
         packages:
           - unzip
-          - unrar
           - zip
-          - rar
